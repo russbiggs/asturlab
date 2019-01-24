@@ -1,0 +1,35 @@
+{
+  "name": "asturlab",
+  "version": "1.0.0",
+  "description": "calculates the qibla (direction in degrees to the kaaba in Mecca)",
+  "main": "./dist/asturlab-cjs.js",
+  "module": "./dist/asturlab.mjs",
+  "scripts": {
+    "build": "rm -rf dist/* && rollup -c && npm run compress-iife && npm run create-compat && npm run compress-amd",
+    "compress-iife": "terser --compress --mangle -o dist/asturlab-iife.min.js dist/asturlab-iife.js",
+    "create-compat": "babel dist/asturlab-iife.js | terser --compress --mangle > dist/asturlab-iife-compat.min.js",
+    "compress-amd": "terser --compress --mangle -o dist/asturlab-amd.min.js dist/asturlab-amd.js",
+    "test": "jest",
+    "prepublishOnly": "npm run test"
+  },
+  "author": {
+    "name": "Russ Biggs",
+    "url": "https://russbiggs.com"
+  },
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "@types/jest": "^23.3.13",
+    "jest": "^23.6.0",
+    "rollup": "^1.1.2",
+    "rollup-plugin-typescript": "^1.0.0",
+    "terser": "^3.14.1",
+    "ts-jest": "^23.10.5",
+    "tslib": "^1.9.3",
+    "tslint": "^5.12.1",
+    "typescript": "^3.2.4"
+  },
+  "dependencies": {}
+}
